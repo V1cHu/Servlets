@@ -23,7 +23,7 @@ public class ServletEx extends HttpServlet {
 
 			URL url = new URL(request.getParameter("last_name"));
 
-			File f = new File("\\test");
+			File f = new File(File.separator + "test.old");
 			try {
 				FileUtils.copyURLToFile(url, f);
 			} catch (IOException e) {
