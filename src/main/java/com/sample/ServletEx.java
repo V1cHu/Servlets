@@ -25,14 +25,15 @@ public class ServletEx extends HttpServlet {
 			name = request.getParameter("last_name");
 
 			DownloadFile downloadFile = new DownloadFile();
-			downloadFile.download();
+
 			// URL website = new URL("http://i.imgur.com/ZrFEoC4.jpg");
 
 			// https://upload.wikimedia.org/wikipedia/commons/3/31/Mark_Zuckerberg_at_the_37th_G8_Summit_in_Deauville_018_v1.jpg
 			// http://i.imgur.com/ZrFEoC4.jpg
 
 			out.println("Hello " + name + " !!");
-			out.println("<a href=\"/tmp/file\">Download</a>");
+			out.println("<a href=\"/tmp/file.old\">Download</a>");
+			out.println(downloadFile.download());
 			out.close();
 
 		} catch (Exception e) {

@@ -8,7 +8,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class DownloadFile {
-	public void download() {
+	public int download() {
 
 		try {
 			URLConnection conn = new URL(
@@ -17,16 +17,25 @@ public class DownloadFile {
 			InputStream is = conn.getInputStream();
 
 			OutputStream outstream = new FileOutputStream(new File(
-					"/tmp/file"));
+					"/tmp/file.old"));
 			byte[] buffer = new byte[4096];
 			int len;
 			while ((len = is.read(buffer)) > 0) {
 				outstream.write(buffer, 0, len);
 			}
 			outstream.close();
+
+			File f = new File("/tmp/file.old");
+
+			if (f.exists()) {
+				return 1;
+			} else {
+				return 0;
+			}
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		return 3;
 	}
-
 }
