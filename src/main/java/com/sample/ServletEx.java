@@ -21,8 +21,6 @@ public class ServletEx extends HttpServlet {
 			response.setContentType("text/html");
 			String name;
 
-			URL url = new URL(request.getParameter("last_name"));
-
 			name = request.getParameter("last_name");
 			out.println("Hello " + name + " !!");
 			out.close();
