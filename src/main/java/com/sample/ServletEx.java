@@ -1,15 +1,16 @@
 package com.sample;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import org.apache.commons.io.FileUtils;
 
 @SuppressWarnings("serial")
 public class ServletEx extends HttpServlet {
@@ -23,13 +24,15 @@ public class ServletEx extends HttpServlet {
 
 			name = request.getParameter("last_name");
 
-			File f = new File(File.separator + "test");
-			URL url = new URL("http://i.imgur.com/ZrFEoC4.jpg");
-			FileUtils.copyURLToFile(url, f);
+			DownloadFile downloadFile = new DownloadFile();
+			downloadFile.download();
+			// URL website = new URL("http://i.imgur.com/ZrFEoC4.jpg");
+
+			// https://upload.wikimedia.org/wikipedia/commons/3/31/Mark_Zuckerberg_at_the_37th_G8_Summit_in_Deauville_018_v1.jpg
+			// http://i.imgur.com/ZrFEoC4.jpg
 
 			out.println("Hello " + name + " !!");
-			out.println();
-			out.println("<a href=\"test\">Download</a>");
+			out.println("<a href=\"/tmp/file\">Download</a>");
 			out.close();
 
 		} catch (Exception e) {
