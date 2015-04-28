@@ -27,7 +27,7 @@ public class ServletEx extends HttpServlet {
 			// http://i.imgur.com/ZrFEoC4.jpg
 
 			out.println("Hello " + name + " !!");
-			out.println("<a href=\"/file.old\">Download</a>");
+			out.println("<a href=\"/tmp/file.old\">Download</a>");
 			out.println(downloadFile.download());
 			out.println(downloadFile.getStatus());
 			out.close();

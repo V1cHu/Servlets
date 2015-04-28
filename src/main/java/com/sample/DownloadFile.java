@@ -19,7 +19,7 @@ public class DownloadFile {
 					.openConnection();
 			InputStream is = conn.getInputStream();
 
-			File f1 = new File("/file.old");
+			File f1 = new File("/tmp/file.old");
 
 			System.out
 					.println("fIle creation status ====" + f1.createNewFile());
@@ -32,7 +32,7 @@ public class DownloadFile {
 			}
 			outstream.close();
 
-			File f = new File("/file.old");
+			File f = new File("/tmp/file.old");
 
 			if (f.exists()) {
 				status = "File Exists";
