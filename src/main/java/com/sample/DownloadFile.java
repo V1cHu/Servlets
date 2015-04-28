@@ -8,16 +8,18 @@ import java.net.URL;
 import java.net.URLConnection;
 
 public class DownloadFile {
+
+	String status = null;
+
 	public int download() {
 
 		try {
 			URLConnection conn = new URL(
-					"http://online1.tingclass.com/lesson/shi0529/43/32.mp3")
+					"http://www.tonycuffe.com/mp3/tail%20toddle.mp3")
 					.openConnection();
 			InputStream is = conn.getInputStream();
 
-			OutputStream outstream = new FileOutputStream(new File(
-					"/tmp/file.old"));
+			OutputStream outstream = new FileOutputStream(new File("/file.old"));
 			byte[] buffer = new byte[4096];
 			int len;
 			while ((len = is.read(buffer)) > 0) {
@@ -25,17 +27,22 @@ public class DownloadFile {
 			}
 			outstream.close();
 
-			File f = new File("/tmp/file.old");
+			File f = new File("/file.old");
 
 			if (f.exists()) {
-				return 1;
+				status = "File Exists";
 			} else {
-				return 0;
+				status = "File does not exist";
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		status = "nothing happened";
 		return 3;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 }

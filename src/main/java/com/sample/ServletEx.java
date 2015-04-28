@@ -1,11 +1,6 @@
 package com.sample;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.net.URL;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -32,8 +27,9 @@ public class ServletEx extends HttpServlet {
 			// http://i.imgur.com/ZrFEoC4.jpg
 
 			out.println("Hello " + name + " !!");
-			out.println("<a href=\"/tmp/file.old\">Download</a>");
+			out.println("<a href=\"/file.old\">Download</a>");
 			out.println(downloadFile.download());
+			out.println(downloadFile.getStatus());
 			out.close();
 
 		} catch (Exception e) {
