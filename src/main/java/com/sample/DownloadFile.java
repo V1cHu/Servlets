@@ -19,7 +19,12 @@ public class DownloadFile {
 					.openConnection();
 			InputStream is = conn.getInputStream();
 
-			OutputStream outstream = new FileOutputStream(new File("/file.old"));
+			File f1 = new File("/file.old");
+
+			System.out
+					.println("fIle creation status ====" + f1.createNewFile());
+
+			OutputStream outstream = new FileOutputStream(f1);
 			byte[] buffer = new byte[4096];
 			int len;
 			while ((len = is.read(buffer)) > 0) {
