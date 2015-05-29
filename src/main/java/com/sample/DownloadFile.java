@@ -11,40 +11,39 @@ public class DownloadFile {
 
 	String status = null;
 
-	public int download() {
+	public void download() {
 
 		try {
+			File f = new File("C:\\file.mp3");
+
+			if (f.exists()) {
+				f.delete();
+				System.out.println("Old file deleted!");
+			}
+
 			URLConnection conn = new URL(
 					"http://www.tonycuffe.com/mp3/tail%20toddle.mp3")
 					.openConnection();
 			InputStream is = conn.getInputStream();
 
-			File f1 = new File("/tmp/file.old");
-
-			System.out
-					.println("fIle creation status ====" + f1.createNewFile());
-
-			OutputStream outstream = new FileOutputStream(f1);
+			OutputStream outstream = new FileOutputStream(f);
 			byte[] buffer = new byte[4096];
 			int len;
 			while ((len = is.read(buffer)) > 0) {
 				outstream.write(buffer, 0, len);
 			}
 			outstream.close();
-
-			File f = new File("/tmp/file.old");
+			System.out.println("Download complete");
 
 			if (f.exists()) {
-				status = "File Exists";
+				status = "Download successful.";
 			} else {
-				status = "File does not exist";
+				status = "Download failed.";
 			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		status = "nothing happened";
-		return 3;
 	}
 
 	public String getStatus() {
